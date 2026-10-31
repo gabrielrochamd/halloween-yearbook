@@ -1,5 +1,5 @@
 import { build } from "esbuild";
-import { copyFile, mkdir } from "node:fs/promises";
+import { copyFile, mkdir, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildSignerIndex } from "./yearbook-data.js";
@@ -19,9 +19,10 @@ await build({
 });
 
 await buildSignerIndex();
+await rm(runtimeDirectory, { recursive: true, force: true });
 await mkdir(runtimeDirectory, { recursive: true });
 for (const extension of ["mjs", "wasm"]) {
-  const runtimeFile = `ort-wasm-simd-threaded.jsep.${extension}`;
+  const runtimeFile = `ort-wasm-simd-threaded.${extension}`;
   await copyFile(
     path.join(onnxRuntimeDirectory, runtimeFile),
     path.join(runtimeDirectory, runtimeFile),

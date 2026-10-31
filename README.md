@@ -35,6 +35,6 @@ Build the static site with `npm run build` and publish the contents of `public/`
 
 ## Local AI oracle
 
-The Graveyard Oracle uses the open-weight SmolLM2 360M Instruct model through Transformers.js. Press **“Let's see what the graves say”** to download the model on first use (about 200 MB) and generate a new short tip or challenge fact inside a browser Web Worker. It prefers WebGPU when available and falls back to WASM on the CPU. The inference library and WebAssembly runtime are served by this app; the model is cached by the browser for later use.
+The Graveyard Oracle uses the open-weight SmolLM2 360M Instruct model through Transformers.js. Press **“Let's see what the graves say”** to download the model on first use (about 200 MB) and generate a new short tip or challenge fact inside a browser Web Worker. Inference runs locally using the CPU and WebAssembly. The inference library and WebAssembly runtime are served by this app; the model is cached by the browser for later use.
 
 Inference runs in the visitor's browser; GitHub handles and prompts are not sent to an AI service. The browser does need internet access to download model files from Hugging Face on first use. Generated facts can be wrong, so the oracle is grounded in the official Week 4 challenge details and labels its output for review. A modern browser and an internet connection for the initial download are required.

@@ -15,12 +15,12 @@ const staticFiles = new Map([
   ["/signers.json", ["signers.json", "application/json; charset=utf-8"]],
   ["/avatars.json", ["avatars.json", "application/json; charset=utf-8"]],
   ["/site-config.json", ["site-config.json", "application/json; charset=utf-8"]],
-  ["/runtime/ort-wasm-simd-threaded.jsep.mjs", [
-    path.join("runtime", "ort-wasm-simd-threaded.jsep.mjs"),
+  ["/runtime/ort-wasm-simd-threaded.mjs", [
+    path.join("runtime", "ort-wasm-simd-threaded.mjs"),
     "text/javascript; charset=utf-8",
   ]],
-  ["/runtime/ort-wasm-simd-threaded.jsep.wasm", [
-    path.join("runtime", "ort-wasm-simd-threaded.jsep.wasm"),
+  ["/runtime/ort-wasm-simd-threaded.wasm", [
+    path.join("runtime", "ort-wasm-simd-threaded.wasm"),
     "application/wasm",
   ]],
 ]);

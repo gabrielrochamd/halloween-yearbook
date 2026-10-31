@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -38,7 +38,7 @@ test("serves the yearbook, generated signer list, avatar list, and repository co
   const page = await pageResponse.text();
   assert.match(page, /The yearbook/);
   assert.match(page, /Let's see what the graves say/);
-  assert.match(page, /running right here in your browser/);
+  assert.match(page, /running on your device/);
   assert.match(page, /Only your public GitHub handle and a random emoji are added/);
   assert.doesNotMatch(page, /name="name"/);
   assert.deepEqual(await listResponse.json(), []);
@@ -102,7 +102,7 @@ test("serves the original Halloween wallpaper asset", async () => {
   assert.match(await response.text(), /<svg/);
 });
 
-test("serves the bundled AI worker and local WASM runtime without a third-party script policy", async () => {
+test("serves the bundled AI worker and Cloudflare Pages-compatible local WASM runtime", async () => {
   const [workerResponse, pageResponse] = await Promise.all([
     fetch(`${baseUrl}/ai-worker.bundle.js`),
     fetch(baseUrl),
@@ -117,7 +117,13 @@ test("serves the bundled AI worker and local WASM runtime without a third-party 
   assert.match(policy, /wasm-unsafe-eval/);
   assert.match(policy, /worker-src 'self' blob:/);
 
-  const runtimeResponse = await fetch(`${baseUrl}/runtime/ort-wasm-simd-threaded.jsep.mjs`);
+  const [runtimeResponse, wasmResponse] = await Promise.all([
+    fetch(`${baseUrl}/runtime/ort-wasm-simd-threaded.mjs`),
+    fetch(`${baseUrl}/runtime/ort-wasm-simd-threaded.wasm`),
+  ]);
   assert.equal(runtimeResponse.status, 200);
   assert.match(runtimeResponse.headers.get("content-type"), /javascript/);
+  assert.equal(wasmResponse.status, 200);
+  assert.match(wasmResponse.headers.get("content-type"), /application\/wasm/);
+  assert.ok((await stat(new URL("../public/runtime/ort-wasm-simd-threaded.wasm", import.meta.url))).size < 25 * 1024 * 1024);
 });
