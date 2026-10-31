@@ -1,0 +1,22 @@
+{
+  "name": "halloween-hacktoberfest-yearbook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A shared Halloween-themed Hacktoberfest contributor yearbook.",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:signers": "node scripts/build-signers.js",
+    "prestart": "npm run build",
+    "pretest": "npm run build",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "4.3.2",
+    "esbuild": "0.27.2"
+  }
+}

@@ -1,0 +1,63 @@
+name: Sign the yearbook
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  add-signer:
+    if: github.event.issue.title == 'Sign'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the trusted default branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Add the issue author's handle and random avatar
+        id: signer
+        env:
+          SIGNER_HANDLE: ${{ github.event.issue.user.login }}
+        run: node .github/scripts/add-yearbook-entry.js
+
+      - name: Explain and close duplicate requests
+        if: steps.signer.outputs.added == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SIGNER_HANDLE: ${{ github.event.issue.user.login }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Thanks, @${SIGNER_HANDLE} — your handle is already in the yearbook."
+          gh issue close "$ISSUE_NUMBER"
+
+      - name: Validate the generated roster
+        if: steps.signer.outputs.added == 'true'
+        run: node scripts/build-signers.js
+
+      - name: Create and merge the generated pull request
+        if: steps.signer.outputs.added == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SIGNER_HANDLE: ${{ github.event.issue.user.login }}
+          SIGNER_PATH: ${{ steps.signer.outputs.path }}
+        run: |
+          branch="yearbook-sign-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add -- "$SIGNER_PATH"
+          git commit -m "Add signer to the yearbook"
+          git push --set-upstream origin "$branch"
+          gh pr create \
+            --base "$DEFAULT_BRANCH" \
+            --head "$branch" \
+            --title "Add @${SIGNER_HANDLE} to the yearbook" \
+            --body "Adds the issue author's handle with a randomly assigned Halloween avatar. Created from issue #${ISSUE_NUMBER}."
+          gh pr merge "$branch" --squash --delete-branch

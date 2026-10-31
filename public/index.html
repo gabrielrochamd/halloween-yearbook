@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10151c">
+    <meta name="description" content="Sign the Halloween Hacktoberfest yearbook and join the haunted hall of open-source makers.">
+    <title>Hacktoberfest After Dark — The Yearbook</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%83%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <a class="wordmark" href="/" aria-label="Hacktoberfest After Dark home">
+        <span class="wordmark-icon" aria-hidden="true">🎃</span>
+        <span>Hacktoberfest <span class="wordmark-light">After Dark</span></span>
+      </a>
+      <a class="masthead-link" href="#yearbook">Enter the yearbook <span aria-hidden="true">↘</span></a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> HACKTOBERFEST 2026 · THE HAUNTED EDITION</p>
+          <h1 id="page-title">The night is young.<br><em>The commits are spooky.</em></h1>
+          <p class="hero-description">Every great open-source story has a cast. Leave your mark on this little corner of the internet before the moon goes down.</p>
+          <a class="hero-button" href="#sign">Sign the yearbook <span aria-hidden="true">↗</span></a>
+          <p class="hero-caption">A yearbook for the wonderfully weird builders of Hacktoberfest.</p>
+        </div>
+        <div class="hero-stamp" aria-hidden="true">
+          <span>OPEN SOURCE</span>
+          <strong>AFTER<br>DARK</strong>
+          <span>EST. OCT 2026</span>
+        </div>
+        <span class="hero-flourish flourish-one" aria-hidden="true">✳</span>
+        <span class="hero-flourish flourish-two" aria-hidden="true">✦</span>
+      </section>
+
+      <section class="oracle-section" aria-labelledby="oracle-title">
+        <div class="oracle-copy">
+          <p class="eyebrow section-eyebrow">A WHISPER FROM THE OPEN-SOURCE CRYPT</p>
+          <h2 id="oracle-title">Ask the <em>Graveyard Oracle.</em></h2>
+          <p>Summon a fresh spooky tip or Hacktoberfest fact, dreamed up by a small open-weight AI model running right here in your browser.</p>
+          <div class="oracle-links">
+            <a class="oracle-link" href="https://dev.to/events/82" target="_blank" rel="noreferrer">Explore the Week 4 challenge <span aria-hidden="true">↗</span></a>
+            <a class="oracle-link" href="https://huggingface.co/onnx-community/SmolLM2-360M-Instruct" target="_blank" rel="noreferrer">Meet the open model <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="oracle-card">
+          <div class="oracle-mark" aria-hidden="true">☠</div>
+          <p id="oracle-result" class="oracle-result" aria-live="polite" aria-busy="false">The crypt is quiet. Ask the oracle for a little open-source wisdom.</p>
+          <button id="oracle-button" class="oracle-button" type="button">
+            <span>Let's see what the graves say</span><span aria-hidden="true">↗</span>
+          </button>
+          <p id="oracle-status" class="oracle-status" role="status" aria-live="polite">First summon downloads about 200 MB; inference runs on your device. AI facts may need fact-checking.</p>
+        </div>
+      </section>
+
+      <section id="yearbook" class="yearbook-section" aria-labelledby="yearbook-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-eyebrow">THE HAUNTED HALL OF FAME</p>
+            <h2 id="yearbook-title">The yearbook</h2>
+          </div>
+          <p class="signer-count"><span id="signer-count">0</span> <span id="signer-label">souls signed</span></p>
+        </div>
+
+        <div id="signer-grid" class="signer-grid" aria-live="polite" aria-busy="true">
+          <p class="grid-message">Summoning the yearbook…</p>
+        </div>
+      </section>
+
+      <section id="sign" class="sign-section" aria-labelledby="sign-title">
+        <div class="sign-copy">
+          <p class="eyebrow section-eyebrow">YOUR TURN, CREATURE OF THE NIGHT</p>
+          <h2 id="sign-title">Leave a little<br><em>haunt mark.</em></h2>
+          <p>Open a sign request with your GitHub account. We’ll add your handle to the public yearbook and let the crypt choose your Halloween avatar.</p>
+          <div class="privacy-note"><span aria-hidden="true">✧</span> Only your public GitHub handle and a random emoji are added. Your profile name is not copied.</div>
+        </div>
+
+        <div class="sign-form">
+          <p class="field-label avatar-heading">The crypt might summon:</p>
+          <div id="avatar-options" class="avatar-options" aria-hidden="true"></div>
+          <button id="sign-button" class="submit-button" type="button" disabled>
+            <span>Sign in with GitHub</span><span aria-hidden="true">↗</span>
+          </button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite">Yearbook signing is not configured yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Made with a little moonlight and a lot of open source.</span>
+      <span>Hacktoberfest 2026 <span aria-hidden="true">·</span> Stay spooky <span aria-hidden="true">✦</span></span>
+    </footer>
+  </body>
+</html>

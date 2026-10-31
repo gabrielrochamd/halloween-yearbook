@@ -1,0 +1,797 @@
+:root {
+  color-scheme: dark;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #f3eadc;
+  --muted: #a7a4a2;
+  --quiet: #777a82;
+  --accent: #f1a453;
+  --accent-light: #ffd08b;
+  --violet: #c5a5e8;
+  --surface: #181e28;
+  --line: rgb(236 221 197 / 13%);
+  --serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 24%, rgb(73 69 83 / 20%), transparent 42rem),
+    #10151c;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+.masthead,
+main,
+.footer {
+  width: min(1120px, calc(100% - 56px));
+  margin: 0 auto;
+}
+
+.masthead {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.wordmark-icon {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border: 1px solid rgb(241 164 83 / 35%);
+  border-radius: 50%;
+  background: rgb(241 164 83 / 8%);
+  font-size: 19px;
+}
+
+.wordmark-light {
+  color: #c0b9b2;
+  font-weight: 400;
+}
+
+.masthead-link {
+  color: #d7d0c6;
+  font-size: 12px;
+  text-decoration-color: rgb(215 208 198 / 40%);
+  text-underline-offset: 4px;
+}
+
+.masthead-link span {
+  margin-left: 5px;
+  color: var(--accent);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 470px;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 30px;
+  padding: 62px clamp(28px, 6vw, 78px);
+  border: 1px solid rgb(237 222 197 / 10%);
+  border-radius: 12px;
+  background-color: #1c222c;
+  background-image:
+    linear-gradient(90deg, rgb(15 21 29 / 95%) 0%, rgb(15 21 29 / 83%) 43%, rgb(15 21 29 / 18%) 100%),
+    linear-gradient(0deg, rgb(15 21 29 / 42%), transparent 54%),
+    url("/wallpaper.svg");
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 18%);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 650px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font: 700 9px/1.5 "Segoe UI", sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.hero .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgb(241 164 83 / 65%);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin: 22px 0 18px;
+  font-family: var(--serif);
+  font-size: clamp(42px, 6.7vw, 76px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.99;
+}
+
+h1 em,
+.sign-copy h2 em {
+  color: var(--accent-light);
+  font-weight: 400;
+}
+
+.hero-description {
+  max-width: 440px;
+  margin-bottom: 24px;
+  color: #c4c0bc;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.hero-button,
+.submit-button {
+  display: inline-flex;
+  min-height: 45px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 0 17px;
+  border: 1px solid #f1a453;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #231a17;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 140ms ease, transform 140ms ease;
+}
+
+.hero-button:hover,
+.submit-button:not(:disabled):hover {
+  transform: translateY(-1px);
+  background: #ffc273;
+}
+
+.hero-button span,
+.submit-button span:last-child {
+  font-size: 15px;
+}
+
+.hero-caption {
+  margin: 14px 0 0;
+  color: #aaa5a2;
+  font-size: 10px;
+}
+
+.hero-stamp {
+  position: absolute;
+  right: 6%;
+  bottom: 11%;
+  display: flex;
+  width: 114px;
+  height: 114px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(239 203 151 / 62%);
+  border-radius: 50%;
+  color: #f0c996;
+  font: 700 7px/1.5 "Segoe UI", sans-serif;
+  letter-spacing: 0.15em;
+  text-align: center;
+  transform: rotate(9deg);
+}
+
+.hero-stamp::before {
+  position: absolute;
+  inset: 5px;
+  border: 1px dashed rgb(239 203 151 / 50%);
+  border-radius: inherit;
+  content: "";
+}
+
+.hero-stamp strong {
+  margin: 5px 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 0.9;
+}
+
+.hero-flourish {
+  position: absolute;
+  color: #f4c18b;
+  opacity: 0.72;
+}
+
+.flourish-one {
+  top: 17%;
+  right: 24%;
+  font-size: 23px;
+}
+
+.flourish-two {
+  right: 8%;
+  bottom: 34%;
+  color: #d2b6e4;
+  font-size: 17px;
+}
+
+.oracle-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(32px, 7vw, 88px);
+  align-items: center;
+  margin: 37px 0 0;
+  padding: 34px clamp(25px, 5vw, 58px);
+  border: 1px solid rgb(210 182 228 / 20%);
+  border-radius: 9px;
+  background:
+    radial-gradient(ellipse at 5% 50%, rgb(134 94 156 / 16%), transparent 58%),
+    #1a1d29;
+  box-shadow: 0 15px 44px rgb(0 0 0 / 12%);
+}
+
+.oracle-copy h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(31px, 3.8vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.oracle-copy h2 em {
+  color: #d2b6e4;
+  font-weight: 400;
+}
+
+.oracle-copy > p:not(.eyebrow) {
+  max-width: 390px;
+  margin: 15px 0 13px;
+  color: #b3afb0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.oracle-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 17px;
+}
+
+.oracle-link {
+  color: #d2b6e4;
+  font-size: 10px;
+  text-decoration-color: rgb(210 182 228 / 45%);
+  text-underline-offset: 4px;
+}
+
+.oracle-link span {
+  margin-left: 4px;
+}
+
+.oracle-card {
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid rgb(236 221 197 / 13%);
+  border-radius: 7px;
+  background: rgb(13 17 25 / 58%);
+}
+
+.oracle-mark {
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.oracle-result {
+  min-height: 62px;
+  margin: 0 0 15px;
+  color: #f0e9df;
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.oracle-result[aria-busy="true"] {
+  color: #d2b6e4;
+}
+
+.oracle-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 14px;
+  border: 1px solid rgb(210 182 228 / 48%);
+  border-radius: 4px;
+  background: rgb(145 106 164 / 18%);
+  color: #efe3f6;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.oracle-button:not(:disabled):hover {
+  border-color: #d2b6e4;
+  background: rgb(145 106 164 / 33%);
+}
+
+.oracle-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.oracle-button span {
+  color: var(--accent-light);
+  font-size: 14px;
+}
+
+.oracle-status {
+  min-height: 26px;
+  margin: 10px 0 0;
+  color: #92909a;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.oracle-status[data-error="true"] {
+  color: #ffb49f;
+}
+
+.yearbook-section {
+  padding: 76px 0 83px;
+  scroll-margin-top: 24px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.section-eyebrow {
+  margin-bottom: 10px;
+  color: #b6a4c7;
+}
+
+.section-heading h2,
+.sign-copy h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 43px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.signer-count {
+  margin: 0 0 5px;
+  color: #c2b9ae;
+  font: 10px "Segoe UI", sans-serif;
+}
+
+.signer-count span:first-child {
+  color: var(--accent-light);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.signer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.signer-card {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 13px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: linear-gradient(120deg, rgb(30 36 47 / 96%), rgb(24 30 40 / 93%));
+  box-shadow: 0 8px 26px rgb(0 0 0 / 9%);
+  animation: card-arrive 260ms ease both;
+}
+
+.signer-avatar {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  border: 1px solid rgb(223 187 135 / 18%);
+  border-radius: 6px;
+  background: rgb(241 164 83 / 8%);
+  font-size: 27px;
+}
+
+.signer-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.signer-handle {
+  color: #a8a2a0;
+  font: 600 12px "Segoe UI", sans-serif;
+  text-decoration: none;
+}
+
+a.signer-handle:hover {
+  color: var(--accent-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.empty-state,
+.grid-message {
+  grid-column: 1 / -1;
+  display: flex;
+  min-height: 147px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed rgb(236 221 197 / 20%);
+  border-radius: 7px;
+  color: #a7a4a2;
+  text-align: center;
+}
+
+.empty-state p,
+.grid-message {
+  margin: 0;
+  font-size: 12px;
+}
+
+.empty-mark {
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.grid-message {
+  min-height: 86px;
+  border-style: solid;
+  font-size: 12px;
+}
+
+.grid-error {
+  color: #ffc3a0;
+}
+
+.sign-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: clamp(32px, 8vw, 105px);
+  align-items: center;
+  margin-bottom: 78px;
+  padding: 42px clamp(25px, 5vw, 62px);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background:
+    radial-gradient(ellipse at 0% 50%, rgb(131 96 138 / 10%), transparent 55%),
+    #171d26;
+}
+
+.sign-copy h2 {
+  font-size: clamp(36px, 4.2vw, 49px);
+  line-height: 1.06;
+}
+
+.sign-copy h2 em {
+  color: #d2b6e4;
+}
+
+.sign-copy > p:not(.eyebrow) {
+  max-width: 360px;
+  margin: 18px 0;
+  color: #b3afb0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.privacy-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #88858b;
+  font-size: 10px;
+}
+
+.privacy-note span {
+  color: var(--violet);
+  font-size: 15px;
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-label {
+  margin-bottom: 8px;
+  color: #e6ddd1;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.avatar-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.avatar-heading {
+  margin-bottom: 9px;
+}
+
+.avatar-chip {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgb(236 221 197 / 15%);
+  border-radius: 5px;
+  background: #111720;
+  font-size: 19px;
+}
+
+.submit-button {
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  cursor: pointer;
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-status {
+  min-height: 15px;
+  margin: 9px 0 0;
+  color: #b4c894;
+  font-size: 10px;
+}
+
+.form-status[data-error="true"] {
+  color: #ffb49f;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 19px 0 24px;
+  border-top: 1px solid var(--line);
+  color: #83848a;
+  font-size: 9px;
+}
+
+.footer span:last-child {
+  text-align: right;
+}
+
+.footer span span {
+  margin: 0 5px;
+  color: var(--accent);
+}
+
+@keyframes card-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: 430px;
+    background-position: 58% center;
+  }
+
+  .hero-stamp {
+    right: 5%;
+    bottom: 7%;
+    width: 90px;
+    height: 90px;
+    font-size: 6px;
+  }
+
+  .hero-stamp strong {
+    font-size: 16px;
+  }
+
+  .signer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sign-section {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+
+  .oracle-section {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+}
+
+@media (max-width: 520px) {
+  .masthead,
+  main,
+  .footer {
+    width: min(100% - 32px, 1120px);
+  }
+
+  .masthead {
+    padding: 19px 0;
+  }
+
+  .wordmark {
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .wordmark-icon {
+    width: 31px;
+    height: 31px;
+    font-size: 17px;
+  }
+
+  .masthead-link {
+    font-size: 10px;
+  }
+
+  .hero {
+    min-height: 420px;
+    margin-top: 16px;
+    padding: 43px 22px;
+    background-image:
+      linear-gradient(90deg, rgb(15 21 29 / 94%) 0%, rgb(15 21 29 / 77%) 72%, rgb(15 21 29 / 37%) 100%),
+      linear-gradient(0deg, rgb(15 21 29 / 55%), transparent 58%),
+      url("/wallpaper.svg");
+    background-position: 62% center;
+  }
+
+  .hero .eyebrow {
+    max-width: 260px;
+    font-size: 8px;
+  }
+
+  h1 {
+    font-size: clamp(40px, 10.4vw, 54px);
+  }
+
+  .hero-description {
+    max-width: 330px;
+    font-size: 12px;
+  }
+
+  .hero-stamp {
+    right: 7%;
+    bottom: 6%;
+    width: 75px;
+    height: 75px;
+    font-size: 5px;
+  }
+
+  .hero-stamp strong {
+    font-size: 13px;
+  }
+
+  .flourish-one {
+    top: 10%;
+    right: 11%;
+  }
+
+  .yearbook-section {
+    padding: 60px 0;
+  }
+
+  .oracle-section {
+    gap: 18px;
+    margin-top: 22px;
+    padding: 25px 20px;
+  }
+
+  .section-heading {
+    align-items: end;
+    margin-bottom: 19px;
+  }
+
+  .signer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sign-section {
+    gap: 22px;
+    margin-bottom: 52px;
+    padding: 29px 21px 23px;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer span:last-child {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,9 @@
+name: Sign the yearbook
+description: Add your GitHub handle to the public Halloween yearbook.
+title: Sign
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submitting this issue publicly adds your GitHub handle to the yearbook.
+        A Halloween emoji will be chosen for you. Your profile name is not copied.
